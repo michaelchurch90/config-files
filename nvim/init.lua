@@ -359,6 +359,8 @@ require('lazy').setup({
           debugpy = {},
           -- jdtls = {},
           ['google-java-format'] = {},
+          jsonls = {},
+
           lua_ls = {
             settings = {
               Lua = {
