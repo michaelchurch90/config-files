@@ -1,4 +1,6 @@
 return {
+  { 'mbbill/undotree' },
+
   {
     'mfussenegger/nvim-jdtls',
     dependencies = { 'mfussenegger/nvim-dap' },
@@ -42,6 +44,9 @@ return {
       lazy = false,
       opts = {
         default_file_explorer = true,
+        lsp_file_methods = {
+          autosave_changes = true,
+        },
       },
       -- Optional dependencies
       dependencies = { 'nvim-tree/nvim-web-devicons' },

@@ -9,7 +9,7 @@ vim.g.maplocalleader = ' '
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
@@ -351,15 +351,33 @@ require('lazy').setup({
       local servers =
         {
           gopls = {},
-          pyright = {
-            settings = {},
+          basedpyright = {
+            settings = {
+              basedpyright = {
+                analysis = {
+                  typeCheckingMode = 'standard',
+                },
+              },
+            },
           },
+          -- pyright = {
+          --   settings = {
+          --     python = {
+          --       analysis = {
+          --         autoSearchPaths = true,
+          --         diagnosticMode = 'openFilesOnly',
+          --         useLibraryCodeForTypes = true,
+          --       },
+          --     },
+          --   },
+          -- },
           -- ['python-lsp-server'] = {},
           -- ['jedi_language_server'] = {},
-          debugpy = {},
+          -- debugpy = {},
           -- jdtls = {},
           ['google-java-format'] = {},
           jsonls = {},
+          angularls = {},
 
           lua_ls = {
             settings = {
@@ -440,7 +458,6 @@ require('lazy').setup({
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
       {
         'L3MON4D3/LuaSnip',
         build = (function()
@@ -540,21 +557,39 @@ require('lazy').setup({
       }
     end,
   },
-  -- {
-  --   'rebelot/kanagawa.nvim',
-  --   lazy = false,
-  --   opts = {},
-  --   config = function()
-  --     vim.cmd 'colorscheme kanagawa-dragon'
-  --   end,
-  -- },
   {
     'rose-pine/neovim',
     name = 'rose-pine',
+    opts = {
+      varient = 'light',
+      -- disable_background = true,
+    },
     config = function()
-      vim.cmd 'colorscheme rose-pine-dawn'
+      vim.cmd 'colorscheme rose-pine'
     end,
   },
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   opts = {
+  --     theme = 'dragon', -- Load "wave" theme when 'background' option is not set
+  --     background = { -- map the value of 'background' option to a theme
+  --       dark = 'dragon', -- try "dragon" !
+  --       light = 'dragon',
+  --     },
+  --   },
+    -- config = function()
+    --   vim.cmd 'colorscheme kanagawa-dragon'
+    -- end,
+  -- },
+  -- {
+  --   'xiantang/darcula-dark.nvim',
+  --   dependencies = {
+  --     'nvim-treesitter/nvim-treesitter',
+  --   },
+  --   config = function()
+  --     vim.cmd 'colorscheme darcula-dark'
+  --   end,
+  -- },
 
   -- {
   --   'projekt0n/github-nvim-theme',
@@ -568,16 +603,23 @@ require('lazy').setup({
   --     vim.cmd 'colorscheme github_dark'
   --   end,
   -- },
-  {
-    'maxmx03/solarized.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.o.background = 'light'
-      vim.cmd.colorscheme 'solarized'
-    end,
-  },
+  -- {
+  --   'maxmx03/solarized.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.o.background = 'light'
+  --     vim.cmd.colorscheme 'solarized'
+  --   end,
+  -- },
   -- { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+
+  -- {
+  --   'doums/darcula',
+  --   config = function()
+  --     vim.cmd.colorscheme 'darcula'
+  --   end,
+  -- },
   -- {
   --   'ellisonleao/gruvbox.nvim',
   --   priority = 1000,
